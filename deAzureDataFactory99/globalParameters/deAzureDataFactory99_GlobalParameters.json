@@ -1,0 +1,6 @@
+{
+	"global_param_env": {
+		"type": "string",
+		"value": "training"
+	}
+}

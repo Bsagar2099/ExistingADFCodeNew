@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "deAzureDataFactory99"
+		},
+		"ADF_Linked_srv_sales_accountKey": {
+			"value": ""
+		},
+		"LS_Synapse_SQL_password": {
+			"value": ""
+		},
+		"ADF_Linked_srv_sales_properties_typeProperties_url": {
+			"value": "https://declassesstorageaccount.dfs.core.windows.net/"
+		},
+		"AdfVaultLS_properties_typeProperties_url": {
+			"value": "https://declassesstorageaccount.dfs.core.windows.net"
+		},
+		"LS_Synapse_SQL_properties_typeProperties_server": {
+			"value": "de-synapse-ws26.sql.azuresynapse.net"
+		},
+		"LS_Synapse_SQL_properties_typeProperties_database": {
+			"value": "dedicatedsqlpool"
+		},
+		"LS_Synapse_SQL_properties_typeProperties_userName": {
+			"value": "sqladminuser"
+		},
+		"dfVaultLS_properties_typeProperties_baseUrl": {
+			"value": "https://deClassesVault.vault.azure.net/"
+		}
+	}
+}

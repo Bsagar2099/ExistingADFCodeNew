@@ -1,0 +1,98 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "deAzureDataFactory99"
+		},
+		"ADF_Linked_srv_sales_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ADF_Linked_srv_sales'"
+		},
+		"LS_Synapse_SQL_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_Synapse_SQL'"
+		},
+		"ADF_Linked_srv_sales_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://declassesstorageaccount.dfs.core.windows.net/"
+		},
+		"AdfVaultLS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://declassesstorageaccount.dfs.core.windows.net"
+		},
+		"LS_Synapse_SQL_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "de-synapse-ws26.sql.azuresynapse.net"
+		},
+		"LS_Synapse_SQL_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "dedicatedsqlpool"
+		},
+		"LS_Synapse_SQL_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sqladminuser"
+		},
+		"dfVaultLS_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://deClassesVault.vault.azure.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "deAzureDataFactory99_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ADF_Linked_srv_sales_accountKey": {
+						"value": "[parameters('ADF_Linked_srv_sales_accountKey')]"
+					},
+					"LS_Synapse_SQL_password": {
+						"value": "[parameters('LS_Synapse_SQL_password')]"
+					},
+					"ADF_Linked_srv_sales_properties_typeProperties_url": {
+						"value": "[parameters('ADF_Linked_srv_sales_properties_typeProperties_url')]"
+					},
+					"LS_Synapse_SQL_properties_typeProperties_server": {
+						"value": "[parameters('LS_Synapse_SQL_properties_typeProperties_server')]"
+					},
+					"LS_Synapse_SQL_properties_typeProperties_database": {
+						"value": "[parameters('LS_Synapse_SQL_properties_typeProperties_database')]"
+					},
+					"LS_Synapse_SQL_properties_typeProperties_userName": {
+						"value": "[parameters('LS_Synapse_SQL_properties_typeProperties_userName')]"
+					},
+					"dfVaultLS_properties_typeProperties_baseUrl": {
+						"value": "[parameters('dfVaultLS_properties_typeProperties_baseUrl')]"
+					},
+					"AdfVaultLS_properties_typeProperties_url": {
+						"value": "[parameters('AdfVaultLS_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
