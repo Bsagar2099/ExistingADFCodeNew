@@ -1,0 +1,21 @@
+{
+	"name": "deAzureDataFactory99",
+	"properties": {
+		"globalParameters": {
+			"global_param_env": {
+				"type": "string",
+				"value": "training"
+			}
+		},
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "766f4fb4-0be2-4cde-98a7-9d9902f1d10e",
+		"tenantId": "0aa15130-964f-40b1-a61e-ec577ae5fbd2"
+	}
+}

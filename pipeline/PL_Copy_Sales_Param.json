@@ -1,0 +1,122 @@
+{
+	"name": "PL_Copy_Sales_Param",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_Sales_Param_Source",
+						"type": "DatasetReference",
+						"parameters": {
+							"pContainer": {
+								"value": "@pipeline().parameters.pSourceContainer",
+								"type": "Expression"
+							},
+							"pFolder": {
+								"value": "@pipeline().parameters.pSourceFolder",
+								"type": "Expression"
+							},
+							"pFileName": {
+								"value": "@pipeline().parameters.pSourceFile",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_Sales_Param_Target",
+						"type": "DatasetReference",
+						"parameters": {
+							"pContainer": {
+								"value": "@pipeline().parameters.pTargetContainer",
+								"type": "Expression"
+							},
+							"pFolder": {
+								"value": "@pipeline().parameters.pTargetFolder",
+								"type": "Expression"
+							},
+							"pFileName": {
+								"value": "@pipeline().parameters.pTargetFile",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"pSourceContainer": {
+				"type": "string",
+				"defaultValue": "bronze"
+			},
+			"pSourceFolder": {
+				"type": "string",
+				"defaultValue": "sales"
+			},
+			"pSourceFile": {
+				"type": "string",
+				"defaultValue": "sales_2026_03_01.csv"
+			},
+			"pTargetContainer": {
+				"type": "string",
+				"defaultValue": "silver"
+			},
+			"pTargetFolder": {
+				"type": "string",
+				"defaultValue": "processed"
+			},
+			"pTargetFile": {
+				"type": "string",
+				"defaultValue": "target_sales_2026_03_01.csv"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-10-20T15:30:12Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

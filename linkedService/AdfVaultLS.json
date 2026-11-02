@@ -1,0 +1,19 @@
+{
+	"name": "AdfVaultLS",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://declassesstorageaccount.dfs.core.windows.net",
+			"accountKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "dfVaultLS",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "adf-key"
+			}
+		}
+	}
+}

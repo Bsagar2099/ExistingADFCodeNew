@@ -1,0 +1,25 @@
+{
+	"name": "TR_Daily_Archive",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_Copy_Sales_Param",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 3,
+				"startTime": "2026-10-20T21:31:00",
+				"endTime": "2026-10-21T21:45:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}
